@@ -1,38 +1,45 @@
 <?php
+namespace Controller;
 
-class PengeluaranController
-{
-    private $model;
+use Model\PengeluaranModel;
 
-    public function __construct($model)
-    {
-        $this->model = $model;
-    }
+class PengeluaranController {
 
-    // List all pengeluaran
-    public function index()
-    {
-        $pengeluaran = $this->model->getAllPengeluaran();
-        require_once '../app/views/listPengeluaran.php';
-    }
+    public function tambahPengeluaran() {
+        session_start();
 
-    // Add pengeluaran
-    public function add($data)
-    {
-        if ($this->model->addPengeluaran($data)) {
-            header("Location: /pengeluaran");
-        } else {
-            echo "Gagal menambahkan pengeluaran.";
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: " . APP_PATH . "index.php");
+            exit();
         }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $tanggal = $_POST['tanggal'];
+            $keterangan = $_POST['keterangan'];
+            $jumlah = $_POST['jumlah'];
+            $user_id = $_SESSION['user_id'];
+
+            $pengeluaranModel = new PengeluaranModel();
+            if ($pengeluaranModel->createPengeluaran($user_id, $tanggal, $keterangan, $jumlah)) {
+                header("Location: " . APP_PATH . "index.php");
+            } else {
+                echo "Failed to add pengeluaran!";
+            }
+        }
+        require_once '../view/tambahpengeluaran.php';
     }
 
-    // Delete pengeluaran
-    public function delete($id)
-    {
-        if ($this->model->deletePengeluaran($id)) {
-            header("Location: /pengeluaran");
-        } else {
-            echo "Gagal menghapus pengeluaran.";
+    public function daftarPengeluaran() {
+        session_start();
+
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: " . APP_PATH . "index.php");
+            exit();
         }
+
+        $user_id = $_SESSION['user_id'];
+        $pengeluaranModel = new PengeluaranModel();
+        $pengeluaran = $pengeluaranModel->getPengeluaranByUser($user_id);
+        require_once '../view/pengeluaran.php';
     }
 }

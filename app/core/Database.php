@@ -7,10 +7,7 @@ use PDOException;
 // define base URL path
 define("APP_PATH", "http://103.59.95.145/unkpresent/devops/");
 
-
 class Database {
-
-    
     private $host = 'localhost';
     private $db_name = 'db_catatanpengeluaran';
     private $username = 'testadmin';
