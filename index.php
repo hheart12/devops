@@ -8,8 +8,8 @@ spl_autoload_register(function ($class) {
 });
 
 // Menggunakan namespace Controller untuk akses controller
-use Controller\UserController;
-use Controller\PengeluaranController;
+use controllers\UserController;
+use controllers\PengeluaranController;
 
 session_start();
 
