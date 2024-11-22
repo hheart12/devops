@@ -12,19 +12,37 @@ class UserModel {
         $this->conn = $database->getConnection();
     }
 
-    public function createUser($username, $password) {
-        $query = "INSERT INTO " . $this->table_name . " (username, password) VALUES (?, ?)";
+    public function login($email, $password) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE email = :email";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $username);
-        $stmt->bindParam(2, password_hash($password, PASSWORD_DEFAULT));
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        // Cek apakah ada pengguna dan password cocok
+        if ($user && $user['password'] === $password) { // Bandingkan password dalam bentuk plaintext
+
+            return $user; // Jika password cocok
+        }
+        return false; // Jika tidak cocok
+    }
+
+    public function register($nama, $email, $password) {
+        $query = "INSERT INTO " . $this->table_name . " (nama, email, password) VALUES (:nama, :email, :password)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':nama', $nama);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password); // Simpan password dalam bentuk plaintext
         return $stmt->execute();
     }
 
-    public function getUserByUsername($username) {
-        $query = "SELECT id, username, password FROM " . $this->table_name . " WHERE username = ?";
+    public function emailExists($email) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE email = :email";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $username);
+        $stmt->bindParam(':email', $email);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
     }
 }

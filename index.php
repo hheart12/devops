@@ -1,58 +1,36 @@
 <?php
-// Autoload classes (pastikan Anda sudah menambahkan autoloader atau manual require_once sesuai dengan struktur folder)
-spl_autoload_register(function ($class) {
-    $file = str_replace('\\', '/', $class) . '.php';
-    if (file_exists($file)) {
-        require_once $file;
-    }
-});
+session_start(); // Memulai session
 
-// Menggunakan namespace Controller untuk akses controller
-use controllers\UserController;
-use controllers\PengeluaranController;
+require_once './app/core/Database.php';
+require_once './app/model/UserModel.php';
+require_once './app/controller/UserController.php';
 
-session_start();
+use Controller\UserController;
 
-// Definisikan variabel aksi
-$action = isset($_GET['action']) ? $_GET['action'] : '';
-
-// Menangani aksi berdasarkan parameter di URL
-switch ($action) {
-    case 'login':
-        $userController = new UserController();
-        $userController->login();
-        break;
-        
-    case 'register':
-        $userController = new UserController();
-        $userController->register();
-        break;
-        
-    case 'logout':
-        $userController = new UserController();
-        $userController->logout();
-        break;
-        
-    case 'tambahPengeluaran':
-        $pengeluaranController = new PengeluaranController();
-        $pengeluaranController->tambahPengeluaran();
-        break;
-        
-    case 'pengeluaran':
-        $pengeluaranController = new PengeluaranController();
-        $pengeluaranController->daftarPengeluaran();
-        break;
-        
-    default:
-        // Default action jika tidak ada aksi yang dipilih
-        if (isset($_SESSION['user_id'])) {
-            // Jika sudah login, tampilkan daftar pengeluaran
-            $pengeluaranController = new PengeluaranController();
-            $pengeluaranController->daftarPengeluaran();
-        } else {
-            // Jika belum login, arahkan ke login page
-            $userController = new UserController();
-            $userController->login();
-        }
-        break;
+// Cek apakah pengguna sudah login
+if (isset($_SESSION['user'])) {
+    header("Location: /tokobekas/app/view/dashboarduser.php");
+    exit();
 }
+
+$userController = new UserController();
+
+// Tangani login
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    
+    $userController->login($email, $password);
+}
+
+// Tangani registrasi
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
+    $nama = $_POST['nama'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    
+    $userController->register($nama, $email, $password);
+}
+
+Tampilkan halaman login secara default
+// include './app/view/login.php';
