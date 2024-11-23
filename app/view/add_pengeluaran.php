@@ -35,7 +35,7 @@ if (!isset($_SESSION['user'])) {
             border-color: #712cf9;
         }
         .btn-bd-primary:hover {
-            background-color: #6528e0;
+            background-color: #218838;
             border-color: #6528e0;
         }
         .bg-light {
