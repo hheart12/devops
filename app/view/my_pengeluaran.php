@@ -1,3 +1,38 @@
+<?php
+error_reporting(E_ALL & ~E_NOTICE); // Menyembunyikan pesan notice
+session_start(); // Pastikan ini dipanggil hanya sekali
+
+// Redirect if the user is not logged in
+if (!isset($_SESSION['user'])) {
+    header("Location: /unkpresent/devops/index.php");
+    exit();
+}
+
+// Include the PengeluaranController
+require_once '../controller/PengeluaranController.php';
+
+use Controller\PengeluaranController;
+
+// Instantiate the controller
+$pengeluaranController = new PengeluaranController();
+$userId = $_SESSION['user']['id'];
+$userPengeluaranList = $pengeluaranController->showUserPengeluaran($userId);
+
+// Handle the form submission for updating pengeluaran
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_pengeluaran'])) {
+    $pengeluaranController->updatePengeluaran($_POST['id'], $_POST['jumlah'], $_POST['keterangan']);
+    header("Location: my_pengeluaran.php"); // Refresh halaman setelah update
+    exit();
+}
+
+// Handle the form submission for deleting pengeluaran
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])) {
+    $pengeluaranController->deletePengeluaran($_POST['id']);
+    header("Location: my_pengeluaran.php"); // Refresh halaman setelah delete
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +44,7 @@
     <style>
     /* Custom styling for navbar to match the previous page */
     .navbar {
-        background-color: #f8f9fa; /* Warna navbar mirip dengan dashboard */
+        background-color: #f8f9fa;
         box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     }
     .navbar-brand img {
@@ -19,18 +54,18 @@
     .navbar-brand span {
         font-weight: bold;
         font-size: 1.25rem;
-        color: #007bff; /* Warna teks navbar */
     }
 
     /* Custom button styles */
-    .btn-primary {
-        background-color: #28a745;
-        border-color: #28a745;
+    .btn-dashboard {
+        background-color: #5a6268; /* Warna hijau silver */
+        border-color: #5a6268;
     }
-    .btn-primary:hover {
-        background-color: #218838;
-        border-color: #218838;
+    .btn-dashboard:hover {
+        background-color: #4e555b; /* Warna hijau lebih gelap saat hover */
+        border-color: #4e555b;
     }
+
     .btn-danger {
         background-color: #dc3545;
         border-color: #dc3545;
@@ -39,24 +74,14 @@
         background-color: #c82333;
         border-color: #bd2130;
     }
-    .btn-secondary {
-        background-color: #6c757d;
-        border-color: #6c757d;
-    }
-    .btn-secondary:hover {
-        background-color: #5a6268;
-        border-color: #545b62;
-    }
 
     /* Styling table and form elements */
     .table {
         background-color: #ffffff;
         border-radius: 0.5rem;
-        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Shadow untuk tabel */
     }
     .form-control-sm {
         font-size: 0.875rem;
-        border-radius: 0.375rem; /* Rounded form control */
     }
     .form-control-sm:focus {
         background-color: #ffffff;
@@ -70,21 +95,10 @@
     .mb-3, .mb-4, .mb-5 {
         margin-bottom: 1rem;
     }
-
-    /* Adding background color to the page */
-    body {
-        background-color: #f4f6f9; /* Warna latar belakang lebih terang untuk kesan modern */
-    }
-
-    .container {
-        background-color: #ffffff;
-        border-radius: 0.5rem;
-        padding: 20px;
-    }
     </style>
 </head>
 
-<body>
+<body class="bg-light">
 <nav class="navbar navbar-light shadow-sm">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="#">
@@ -119,7 +133,7 @@
                                 <input type="hidden" name="id" value="<?= $pengeluaran['id']; ?>">
                                 <input type="number" name="jumlah" value="<?= $pengeluaran['jumlah']; ?>" class="form-control form-control-sm" required>
                                 <textarea name="keterangan" class="form-control form-control-sm" required><?= $pengeluaran['keterangan']; ?></textarea>
-                                <button type="submit" name="update_pengeluaran" class="btn btn-primary btn-sm mt-1">Update</button>
+                                <button type="submit" name="update_pengeluaran" class="btn btn-dashboard btn-sm mt-1">Update</button>
                             </form>
                         </td>
                         <td>
