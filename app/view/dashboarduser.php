@@ -19,29 +19,33 @@ $user = $_SESSION['user'];
     <link rel="stylesheet" href="/unkpresent/devops/public/css/style.css">
     <style>
         body {
-            background-color: #fafafa;
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradasi biru yang lembut */
             font-family: 'Arial', sans-serif;
+            color: #fff;
         }
         .card {
             border-radius: 15px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #ffffff; /* Warna latar belakang kartu */
+            color: #333;
         }
         .card:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         .btn-custom {
-            background-color: #007bff;
-            border-color: #007bff;
+            background-color: #28a745; /* Warna hijau untuk tombol */
+            border-color: #28a745;
             border-radius: 30px;
             padding: 12px 30px;
         }
         .btn-custom:hover {
-            background-color: #0056b3;
-            border-color: #004085;
+            background-color: #218838;
+            border-color: #1e7e34;
         }
         .navbar {
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #1a73e8; /* Biru cerah untuk navbar */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         .navbar-brand img {
             height: 40px;
@@ -51,9 +55,9 @@ $user = $_SESSION['user'];
             max-width: 1200px;
         }
         .welcome-message {
-            font-size: 1.75rem;
+            font-size: 2rem;
             font-weight: 600;
-            color: #333;
+            color: #fff;
             margin-top: 30px;
             margin-bottom: 20px;
         }
@@ -61,9 +65,9 @@ $user = $_SESSION['user'];
             padding: 30px;
         }
         .card-title {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 500;
-            color: #444;
+            color: #333;
         }
         .card-text {
             font-size: 1rem;
@@ -73,13 +77,10 @@ $user = $_SESSION['user'];
         .text-center {
             text-align: center;
         }
-        .card-deck .card {
-            margin-bottom: 30px;
-        }
         .footer {
             text-align: center;
             margin-top: 40px;
-            color: #888;
+            color: #fff;
         }
         .register-container {
             max-width: 400px;
@@ -103,7 +104,7 @@ $user = $_SESSION['user'];
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo">
