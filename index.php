@@ -1,36 +1,32 @@
 <?php
-session_start(); // Memulai session
 
-require_once './app/core/Database.php';
-require_once './app/model/UserModel.php';
-require_once './app/controller/UserController.php';
+// Autoload file dan inisialisasi
+require_once 'app/core/Database.php';
 
-use Controller\UserController;
+// Mengatur path aplikasi
+define("APP_PATH", "http://103.59.95.145/unkpresent/devops/");
 
-// Cek apakah pengguna sudah login
-if (isset($_SESSION['user'])) {
-    header("Location: /unkpresent/devops/app/view/pengeluaran_list.php");
-    exit();
+// Menangani routing
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+// Menggunakan controller yang sesuai berdasarkan URL
+if ($uri == "/unkpresent/devops/") {
+    $controller = new \App\Controllers\UserController();
+    $controller->login();
+} elseif ($uri == "/unkpresent/devops/register") {
+    $controller = new \App\Controllers\UserController();
+    $controller->register();
+} elseif ($uri == "/unkpresent/devops/logout") {
+    $controller = new \App\Controllers\UserController();
+    $controller->logout();
+} elseif ($uri == "/unkpresent/devops/pengeluaran") {
+    $controller = new \App\Controllers\PengeluaranController();
+    $controller->listPengeluaran();
+} elseif ($uri == "/unkpresent/devops/add_pengeluaran") {
+    $controller = new \App\Controllers\PengeluaranController();
+    $controller->addPengeluaran();
+} else {
+    echo "Page not found!";
 }
 
-$userController = new UserController();
-
-// Tangani login
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    
-    $userController->login($email, $password);
-}
-
-// Tangani registrasi
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
-    $nama = $_POST['nama'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    
-    $userController->register($nama, $email, $password);
-}
-
-// Tampilkan halaman login secara default
-include './app/view/login.php';
+?>
