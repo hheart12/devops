@@ -41,6 +41,7 @@ $user = $_SESSION['user'];
         .navbar-brand {
             font-weight: bold;
             font-size: 1.5rem;
+            color: #FFFFFF;
         }
 
         .navbar-brand img {

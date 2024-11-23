@@ -166,6 +166,11 @@ if (!isset($_SESSION['user'])) {
             height: 60px;
             margin-right: 15px;
         }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #FFFFFF;
+        }
     </style>
 </head>
 <body class="bg-light">

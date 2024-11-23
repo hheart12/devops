@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/unkpresent/devops/public/css/style.css">
     <style>
-                html, body {
+    html, body {
             height: 100%;
             margin: 0;
             padding: 0;
@@ -62,29 +62,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
 
     .navbar {
         background: linear-gradient(135deg, #4CAF50, #8d8f85); /* Hijau dan silver untuk navbar */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
     .navbar-brand {
-            font-weight: bold;
-            font-size: 1.5rem;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #FFFFFF;
         }
 
     .navbar-light .navbar-nav .nav-link {
-            color: #fff !important;
+        color: #fff !important;
         }
 
     .navbar-light .navbar-nav .nav-link:hover {
-            color: #d1e0e0 !important;
+        color: #d1e0e0 !important;
         }
     .logo img {
-            max-width: 100%;
-            height: auto;
-            width: 100px;
-        }
-        .navbar-brand img {
-            height: 60px;
-            margin-right: 15px;
+        max-width: 100%;
+        height: auto;
+        width: 100px;
         }
     
     </style>
