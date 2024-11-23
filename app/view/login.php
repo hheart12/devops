@@ -1,89 +1,69 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['user'])) {
-    header("Location: /unkpresent/devops/index.php");
-    exit();
-}
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Pengeluaran</title>
-    <link rel="stylesheet" href="/unkpresent/devops/public/css/style.css">
+    <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <style>
-        .small-label {
-            font-size: 0.8rem;
+        body {
+            background-color: #fafafa;
         }
-        .form-control-sm {
-            font-size: 0.875rem;
-            background-color: #f8f9fa;
-            transition: background-color 0.3s ease;
+        .login-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
-        .form-control-sm:focus {
-            background-color: #ffffff;
-            border-color: #86b7fe;
-            outline: 0;
-            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
         }
-        .btn-bd-primary {
-            background-color: #28a745; /* Hijau */
-            border-color: #28a745;
-            color: #ffffff; /* Warna teks */
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            width: 100px; /* Atur ukuran logo di sini */
         }
-        .btn-bd-primary:hover {
-            background-color: #218838; /* Hijau lebih gelap */
-            border-color: #1e7e34;
+        .error, .success {
+            text-align: center;
+            margin-top: 10px;
         }
-        .bg-light {
-            background-color: #f8f9fa !important;
-        }
-        .shadow-sm {
-            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-        }
-        .navbar-brand img {
-            height: 40px; /* Ukuran logo */
-            margin-right: 10px;
-        }
-    </style>
+</style>
+
 </head>
-<body class="bg-light">
-<nav class="navbar navbar-light bg-light shadow-sm">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo">
-                <span class="fw-bold">Catatan Pengeluaran</span>
-            </a>
+<body>
+    <div class="login-container mt-5">
+        <div class="logo">
+        <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo">
         </div>
-    </nav>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Tambah Pengeluaran</h1>
-        <br>
-        <a href="dashboarduser.php" class="btn btn-secondary mt-3 mb-3">Kembali ke Dashboard</a>
-        <form method="POST" action="../controller/PengeluaranController.php" class="shadow-sm p-4 bg-white rounded">
-            
+        <h2 class="text-center">Login</h2>
+        <form method="POST" action="/unkpresent/devops/index.php">
             <div class="mb-3">
-                <label for="tanggal" class="form-label small-label">Tanggal</label>
-                <input type="date" name="tanggal" id="tanggal" class="form-control form-control-sm" required>
+                <input type="email" name="email" class="form-control" placeholder="Email" required>
             </div>
-
             <div class="mb-3">
-                <label for="jumlah" class="form-label small-label">Jumlah Pengeluaran (Rp)</label>
-                <input type="text" name="jumlah" id="jumlah" class="form-control form-control-sm" placeholder="Rp 500.000" required>
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
             </div>
-
-            <div class="mb-3">
-                <label for="keterangan" class="form-label small-label">Keterangan</label>
-                <textarea name="keterangan" id="keterangan" class="form-control form-control-sm" placeholder="Keterangan Pengeluaran" required></textarea>
-            </div>
-
-            <button type="submit" name="add_pengeluaran" class="btn btn-bd-primary">Tambah Pengeluaran</button>
+            <button type="submit" name="login" class="btn btn-success w-100">Login</button>
         </form>
+
+        <?php if (isset($_SESSION['error'])): ?>
+            <p class="error text-danger"><?= htmlspecialchars($_SESSION['error']); ?></p>
+            <?php unset($_SESSION['error']); ?>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['success'])): ?>
+            <p class="success text-success"><?= htmlspecialchars($_SESSION['success']); ?></p>
+            <?php unset($_SESSION['success']); ?>
+        <?php endif; ?>
+
+        <p class="text-center mt-3">Jika Anda belum terdaftar, silakan <a href="/unkpresent/devops/app/view/register.php">daftar di sini</a>.</p>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
