@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <style>
         body {
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: linear-gradient(135deg, #4CAF50, #b5b8b1); /* Hijau dan Silver Gradien */
             color: #ffffff;
             font-family: 'Roboto', sans-serif;
             height: 100vh;
@@ -23,7 +23,7 @@
             width: 100%;
             padding: 30px;
             background-color: #ffffff;
-            border-radius: 12px;
+            border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
         .logo {
@@ -33,7 +33,7 @@
         .logo img {
             max-width: 100%;
             height: auto;
-            width: 80px; /* Ukuran logo */
+            width: 90px; /* Ukuran logo */
         }
         .form-control {
             border: 1px solid #ccc;
@@ -42,8 +42,8 @@
             height: 50px;
         }
         .form-control:focus {
-            border-color: #6a11cb;
-            box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
         }
         .input-icon {
             position: relative;
@@ -53,19 +53,20 @@
             top: 12px;
             left: 12px;
             font-size: 20px;
-            color: #6a11cb;
+            color: #4CAF50;
         }
         button {
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: linear-gradient(135deg, #4CAF50, #8d8f85);
             border: none;
             border-radius: 8px;
             height: 50px;
             color: white;
             font-size: 16px;
             font-weight: bold;
+            width: 100%;
         }
         button:hover {
-            background: linear-gradient(to left, #6a11cb, #2575fc);
+            background: linear-gradient(135deg, #45a049, #8d8f85);
         }
         .text-muted {
             color: #6c757d !important;

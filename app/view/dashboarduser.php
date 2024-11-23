@@ -157,7 +157,7 @@ $user = $_SESSION['user'];
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Pengeluaran yang Anda Keluarkan</h5>
+                        <h5 class="card-title">Pengeluaran Anda</h5>
                         <p class="card-text">Lihat daftar pengeluaran anda yang sudah tercatat.</p>
                         <a href="./my_pengeluaran.php" class="btn btn-custom w-100">Lihat Pengeluaran</a>
                     </div>

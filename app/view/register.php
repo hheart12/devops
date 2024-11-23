@@ -79,7 +79,9 @@
         </div>
         <h2 class="text-center text-dark">Create an Account</h2>
         <p class="text-center text-muted">Sign up to get started</p>
-        <form method="POST" action="/unkpresent/devops/"> <!-- Ganti dengan URL yang benar -->
+
+        <!-- Registration Form -->
+        <form method="POST" action="registerHandler.php">
             <div class="mb-3 input-icon">
                 <span class="icon"><i class="bi bi-person-fill"></i></span>
                 <input type="text" name="nama" class="form-control" placeholder="Full Name" required>
@@ -105,7 +107,7 @@
             <?php unset($_SESSION['success']); ?>
         <?php endif; ?>
 
-        <p class="text-center mt-3 text-muted">Already have an account? <a href="/unkpresent/devops/app/view/login.php" class="text-primary fw-bold">Login here</a>.</p>
+        <p class="text-center mt-3 text-muted">Already have an account? <a href="login.php" class="text-primary fw-bold">Login here</a>.</p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
