@@ -62,6 +62,11 @@ class PengeluaranController {
     public function showUserPengeluaran($userId) {
         return $this->pengeluaranModel->getPengeluaranByUser($userId);
     }
+
+// Menghapus barang berdasarkan ID
+    public function deletePengeluaran($id) {
+        return $this->pengeluaranModel->deletePengeluaran($id);
+    }
 }
 
 // Instantiate and handle the request
