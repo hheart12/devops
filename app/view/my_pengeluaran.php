@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
             min-height: 100%;
         }
     .navbar-brand img {
-            height: 40px; /* Ukuran logo */
+            height: 60px; /* Ukuran logo */
             margin-right: 15px;
         }
 
