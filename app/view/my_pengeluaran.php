@@ -42,6 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/unkpresent/devops/public/css/style.css">
     <style>
+                html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
 
     body {
             display: flex;
@@ -115,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
                                     <textarea name="keterangan" class="form-control form-control-sm" required><?= $pengeluaran['keterangan']; ?></textarea>
                                     
                                     <!-- Tombol untuk update pengeluaran -->
-                                    <button type="submit" name="update_pengeluaran" class="btn btn-primary btn-sm mt-1">Update</button>
+                                    <button type="submit" name="update_pengeluaran" class="btn btn-success btn-sm mt-1">Update</button>
                                     <button type="submit" name="delete_pengeluaran" class="btn btn-danger btn-sm w-100 mt-2" onclick="return confirm('Anda yakin ingin menghapus catatan ini?')">Hapus Pengeluaran</button>
                                 </form>
                             </td>
