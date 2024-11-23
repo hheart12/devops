@@ -22,14 +22,18 @@
         .logo {
             text-align: center;
             margin-bottom: 20px;
-            width: 50px;
-            height: 50px;
+        }
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            width: 100px; /* Atur ukuran logo di sini */
         }
         .error, .success {
             text-align: center;
             margin-top: 10px;
         }
-    </style>
+</style>
+
 </head>
 <body>
     <div class="login-container mt-5">
