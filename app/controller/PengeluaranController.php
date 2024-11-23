@@ -64,9 +64,9 @@ class PengeluaranController {
     }
 
 
-    public function deletePengeluaran($id) {
-        return $this->pengeluaranModel->deletePengeluaran($id);
-    }
+//     public function deletePengeluaran($id) {
+//         return $this->pengeluaranModel->deletePengeluaran($id);
+//     }
 
 
 }
