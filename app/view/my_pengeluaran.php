@@ -101,6 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
                                     
                                     <!-- Tombol untuk update pengeluaran -->
                                     <button type="submit" name="update_pengeluaran" class="btn btn-primary btn-sm mt-1">Update</button>
+                                    <button type="submit" name="delete_pengeluaran" class="btn btn-danger btn-sm w-100 mt-2" onclick="return confirm('Anda yakin ingin menghapus catatan ini?')">Hapus Pengeluaran</button>
                                 </form>
                             </td>
                             <td>
@@ -110,7 +111,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
                                     <input type="hidden" name="id" value="<?= $pengeluaran['id']; ?>">
                                     
                                     <!-- Tombol Hapus Pengeluaran -->
-                                    <button type="submit" name="delete_pengeluaran" class="btn btn-danger btn-sm w-100 mt-2" onclick="return confirm('Anda yakin ingin menghapus catatan ini?')">Hapus Pengeluaran</button>
                                 </form>
                             </td>
                         </tr>
