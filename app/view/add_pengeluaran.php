@@ -16,9 +16,8 @@ if (!isset($_SESSION['user'])) {
     <link rel="stylesheet" href="/unkpresent/devops/public/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <style>
-        /* Additional styles */
         .small-label {
-            font-size: 0.8rem; /* Adjust label size as needed */
+            font-size: 0.8rem;
         }
         .form-control-sm {
             font-size: 0.875rem;
@@ -60,8 +59,8 @@ if (!isset($_SESSION['user'])) {
             </div>
 
             <div class="mb-3">
-                <label for="jumlah" class="form-label small-label">Jumlah Pengeluaran</label>
-                <input type="number" name="jumlah" id="jumlah" class="form-control form-control-sm" placeholder="Jumlah Pengeluaran" step="0.01" required>
+                <label for="jumlah" class="form-label small-label">Jumlah Pengeluaran (Rp)</label>
+                <input type="text" name="jumlah" id="jumlah" class="form-control form-control-sm" placeholder="Rp 500.000" required>
             </div>
 
             <div class="mb-3">
