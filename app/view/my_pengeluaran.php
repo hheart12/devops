@@ -42,22 +42,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/unkpresent/devops/public/css/style.css">
     <style>
-    .navbar-brand img {
-            height: 40px; /* Ukuran logo */
-            margin-right: 10px;
-        }
 
     body {
-        display: flex;
-        flex-direction: column;
-        background: linear-gradient(135deg, #d6e8d5, #b5b8b1); /* Gradient hijau dan silver */
-        min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #d6e8d5, #b5b8b1); /* Gradient hijau dan silver */
+            min-height: 100%;
+        }
+    .navbar-brand img {
+            height: 40px; /* Ukuran logo */
+            margin-right: 15px;
         }
 
     .navbar {
         background: linear-gradient(135deg, #4CAF50, #8d8f85); /* Hijau dan silver untuk navbar */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
+
+    .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+    .navbar-light .navbar-nav .nav-link {
+            color: #fff !important;
+        }
+
+    .navbar-light .navbar-nav .nav-link:hover {
+            color: #d1e0e0 !important;
+        }
+
+    
     </style>
 </head>
 
