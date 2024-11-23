@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <style>
         body {
-            background: linear-gradient(135deg, #4CAF50, #b5b8b1); /* Hijau dan Silver Gradien */
+            background: linear-gradient(135deg, #28a745, #6c757d); /* Hijau dan Silver Gradien */
             color: #ffffff;
             font-family: 'Roboto', sans-serif;
             height: 100vh;
@@ -56,7 +56,7 @@
             color: #4CAF50;
         }
         button {
-            background: linear-gradient(135deg, #4CAF50, #8d8f85);
+            background: linear-gradient(135deg,  #28a745, #6c757d);
             border: none;
             border-radius: 8px;
             height: 50px;
@@ -66,7 +66,7 @@
             width: 100%;
         }
         button:hover {
-            background: linear-gradient(135deg, #45a049, #8d8f85);
+            background: linear-gradient(135deg,  #28a745, #6c757d);
         }
         .text-muted {
             color: #6c757d !important;
