@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <style>
         body {
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: linear-gradient(to right, #28a745, #6c757d); /* Green to silver gradient */
             color: #ffffff;
             font-family: 'Roboto', sans-serif;
             height: 100vh;
@@ -42,8 +42,8 @@
             height: 50px;
         }
         .form-control:focus {
-            border-color: #6a11cb;
-            box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+            border-color: #28a745; /* Green border on focus */
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Green glow on focus */
         }
         .input-icon {
             position: relative;
@@ -53,10 +53,10 @@
             top: 12px;
             left: 12px;
             font-size: 20px;
-            color: #6a11cb;
+            color: #28a745; /* Green color for icons */
         }
         button {
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: linear-gradient(to right, #28a745, #6c757d); /* Green to silver gradient */
             border: none;
             border-radius: 8px;
             height: 50px;
@@ -65,10 +65,10 @@
             font-weight: bold;
         }
         button:hover {
-            background: linear-gradient(to left, #6a11cb, #2575fc);
+            background: linear-gradient(to left, #28a745, #6c757d); /* Inverted gradient on hover */
         }
         .text-muted {
-            color: #6c757d !important;
+            color: #6c757d !important; /* Silver text color */
         }
     </style>
 </head>
