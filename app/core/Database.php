@@ -33,5 +33,5 @@ class Database {
             self::$instance = new Database();
         }
         return self::$connection;
-    }
+    }
 }
