@@ -41,7 +41,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
     <title>Pengeluaran Anda</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/unkpresent/devops/public/css/style.css">
+    <style>
+    .navbar-brand img {
+            height: 40px; /* Ukuran logo */
+            margin-right: 10px;
+        }
+    </style>
 </head>
+
 <body class="bg-light">
 <nav class="navbar navbar-light bg-light shadow-sm">
         <div class="container">
