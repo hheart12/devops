@@ -13,19 +13,19 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 // Menangani setiap route
 switch ($uri) {
     case "/unkpresent/devops/":
-    case "/unkpresent/devops/login":
+    case "/unkpresent/devops/login.php":
         // Halaman Login
         $controller = new \App\Controllers\UserController();
         $controller->login();
         break;
 
-    case "/unkpresent/devops/register":
+    case "/unkpresent/devops/register.php":
         // Halaman Register
         $controller = new \App\Controllers\UserController();
         $controller->register();
         break;
 
-    case "/unkpresent/devops/logout":
+    case "/unkpresent/devops/logout.php":
         // Logout
         $controller = new \App\Controllers\UserController();
         $controller->logout();
