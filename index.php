@@ -2,8 +2,8 @@
 session_start(); // Memulai session
 
 require_once './app/core/Database.php';
-require_once './app/models/UserModel.php';
-require_once './app/controllers/UserController.php';
+require_once './app/model/UserModel.php';
+require_once './app/controller/UserController.php';
 
 use Controller\UserController;
 
@@ -33,4 +33,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
 }
 
 // Tampilkan halaman login secara default
-// include './unkpresent/devops/app/view/login.php';
+include './app/view/login.php';

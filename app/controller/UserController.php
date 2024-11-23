@@ -17,12 +17,12 @@ class UserController {
 
         if ($user) {
             $_SESSION['user'] = $user;
-            header("Location: /unkpresent/devops/app/view/barang_list.php");
+            header("Location: /unkpresent/devops/app/view/dashboarduser.php");
             exit();
         } else {
             $_SESSION['error'] = $this->userModel->emailExists($email) ? 
                 "Invalid/unmatched role, email or password." : "Email not registered!";
-            header("Location: /unkpresent/devops/app/view/login.php");
+            header("Location: /unkpresent/devops/index.php");
             exit();
         }
     }
@@ -30,7 +30,7 @@ class UserController {
     public function logout() {
         session_unset();
         session_destroy();
-        header("Location: /unkpresent/devops/app/view/login.php");
+        header("Location: /unkpresent/devops/index.php");
         exit();
     }
 
@@ -52,7 +52,7 @@ public function register($nama, $email, $password) {
     if ($this->userModel->register($nama, $email, $password)) {
         // Set success message in session
         $_SESSION['success'] = "Registration successful! Please log in.";
-        header("Location: /unkpresent/devops/app/view/login.php");
+        header("Location: /unkpresent/devops/");
         exit();
     } else {
         $_SESSION['error'] = "Failed to register!";
