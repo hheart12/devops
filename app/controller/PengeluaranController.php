@@ -28,11 +28,11 @@ class PengeluaranController {
         return $this->pengeluaranModel->updatePengeluaran($id, $jumlah, $keterangan);
     }
 
-    // Handle request based on POST data
+    // Method untuk menangani permintaan penghapusan pengeluaran
     public function handleRequest() {
         session_start();
 
-        // Check if the form to add new pengeluaran has been submitted
+        // Handle form untuk menambah pengeluaran
         if (isset($_POST['add_pengeluaran'])) {
             $data = [
                 'tanggal' => $_POST['tanggal'],
@@ -42,10 +42,8 @@ class PengeluaranController {
 
             if (isset($_SESSION['user']['id'])) {
                 $userId = $_SESSION['user']['id'];
-
-                // Attempt to add the pengeluaran record
-                if ($this->addPengeluaran($data, $userId)) {
-                    header("Location: ../view/my_pengeluaran.php");
+                if ($this->pengeluaranModel->addPengeluaran($data, $userId)) {
+                    header("Location: ../view/pengeluaran_list.php");
                     exit();
                 } else {
                     echo "Gagal menambahkan pengeluaran.";
@@ -55,9 +53,19 @@ class PengeluaranController {
             }
         }
 
-        // Handle other types of requests (like updating, etc.) if needed
-    }
+        // Handle permintaan penghapusan pengeluaran
+        if (isset($_GET['delete_id'])) {
+            $id = $_GET['delete_id'];
 
+            // Proses penghapusan pengeluaran
+            if ($this->pengeluaranModel->deletePengeluaran($id)) {
+                header("Location: ../view/pengeluaran_list.php");
+                exit();
+            } else {
+                echo "Gagal menghapus pengeluaran.";
+            }
+        }
+    }
     // Show pengeluaran for a specific user
     public function showUserPengeluaran($userId) {
         return $this->pengeluaranModel->getPengeluaranByUser($userId);

@@ -25,11 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_pengeluaran'])
     exit();
 }
 
-// Delete Barang
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_barang'])) {
-    $barangController->deletePengeluaran($_POST['id']);
-    header("Location: my_pengeluaran.php"); // Refresh halaman setelah delete
-    exit();
+// Handle penghapusan pengeluaran
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])) {
+    $id = $_POST['id'];
+    $pengeluaranController->deletePengeluaran($id);
+    header("Location: my_pengeluaran.php"); // Refresh halaman setelah penghapusan
+    exit();
 }
 ?>
 
@@ -72,13 +73,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_barang'])) {
                                 </form>
                             </td>
                             <td>
-                            <button type="submit" name="delete_pengeluaran" class="btn btn-danger btn-sm w-100 mt-2" onclick="return confirm('Anda yakin ingin menghapus catatan ini?')">Hapus Pengeluaran</button>
+                                <!-- Form untuk menghapus pengeluaran -->
+                                <form method="POST" action="">
+                                    <input type="hidden" name="id" value="<?= $pengeluaran['id']; ?>">
+                                    <button type="submit" name="delete_pengeluaran" class="btn btn-danger btn-sm w-100 mt-2" onclick="return confirm('Anda yakin ingin menghapus catatan ini?')">Hapus Pengeluaran</button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="4" class="text-center">Anda belum memiliki pengeluaran apapun.</td>
+                        <td colspan="5" class="text-center">Anda belum memiliki pengeluaran apapun.</td>
                     </tr>
                 <?php endif; ?>
             </tbody>
