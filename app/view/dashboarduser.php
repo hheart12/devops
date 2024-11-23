@@ -129,9 +129,9 @@ $user = $_SESSION['user'];
         }
 
         .logo img {
-            max-width: 100%;
+            max-width: 150%;
             height: auto;
-            width: 150px;
+            width: 100px;
         }
 
         .error, .success {
