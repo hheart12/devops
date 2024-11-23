@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
     <style>
     /* Custom styling for navbar to match the previous page */
     .navbar {
-        background-color: #f8f9fa;
+        background-color: #5a6268; /* Hijau Silver */
         box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
     }
     .navbar-brand img {
@@ -95,10 +95,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
     .mb-3, .mb-4, .mb-5 {
         margin-bottom: 1rem;
     }
+
+    /* Custom background color for the page */
+    body {
+        background-color: #f8f9fa;
+    }
     </style>
 </head>
 
-<body class="bg-light">
+<body>
 <nav class="navbar navbar-light shadow-sm">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="#">
@@ -110,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
 
 <div class="container mt-5">
     <h1 class="text-center mb-4">Pengeluaran Anda</h1>
-    <a href="dashboarduser.php" class="btn btn-secondary mb-3">Kembali ke Dashboard</a>
+    <a href="dashboarduser.php" class="btn btn-dashboard mb-3">Kembali ke Dashboard</a>
 
     <table class="table table-striped table-bordered">
         <thead>
