@@ -28,11 +28,11 @@ class PengeluaranController {
         return $this->pengeluaranModel->updatePengeluaran($id, $jumlah, $keterangan);
     }
 
-    // Method untuk menangani permintaan penghapusan pengeluaran
+    // Handle request based on POST data
     public function handleRequest() {
         session_start();
 
-        // Handle form untuk menambah pengeluaran
+        // Check if the form to add new pengeluaran has been submitted
         if (isset($_POST['add_pengeluaran'])) {
             $data = [
                 'tanggal' => $_POST['tanggal'],
@@ -42,8 +42,10 @@ class PengeluaranController {
 
             if (isset($_SESSION['user']['id'])) {
                 $userId = $_SESSION['user']['id'];
-                if ($this->pengeluaranModel->addPengeluaran($data, $userId)) {
-                    header("Location: ../view/pengeluaran_list.php");
+
+                // Attempt to add the pengeluaran record
+                if ($this->addPengeluaran($data, $userId)) {
+                    header("Location: ../view/my_pengeluaran.php");
                     exit();
                 } else {
                     echo "Gagal menambahkan pengeluaran.";
@@ -53,28 +55,15 @@ class PengeluaranController {
             }
         }
 
-        // Handle permintaan penghapusan pengeluaran
-        if (isset($_GET['delete_id'])) {
-            $id = $_GET['delete_id'];
-
-            // Proses penghapusan pengeluaran
-            if ($this->pengeluaranModel->deletePengeluaran($id)) {
-                header("Location: ../view/pengeluaran_list.php");
-                exit();
-            } else {
-                echo "Gagal menghapus pengeluaran.";
-            }
-        }
+        // Handle other types of requests (like updating, etc.) if needed
     }
+
     // Show pengeluaran for a specific user
     public function showUserPengeluaran($userId) {
         return $this->pengeluaranModel->getPengeluaranByUser($userId);
     }
 
-// Menghapus barang berdasarkan ID
-    public function deletePengeluaran($id) {
-        return $this->pengeluaranModel->deletePengeluaran($id);
-    }
+
 }
 
 // Instantiate and handle the request

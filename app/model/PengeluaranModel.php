@@ -16,13 +16,6 @@ class PengeluaranModel {
     }
 
         // Method untuk menghapus pengeluaran berdasarkan ID
-    public function deletePengeluaran($id) {
-            $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':id', $id);
-            
-            return $stmt->execute(); // Menghapus pengeluaran berdasarkan ID
-        }
 
     // Get all records from tbl_pengeluaran
     public function getAllPengeluaran() {
