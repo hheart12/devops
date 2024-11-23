@@ -23,6 +23,11 @@
             text-align: center;
             margin-bottom: 20px;
         }
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            width: 100px; /* Atur ukuran logo di sini */
+        }
         .error, .success {
             text-align: center;
             margin-top: 10px;
@@ -32,7 +37,7 @@
 <body>
     <div class="register-container mt-5">
         <div class="logo">
-            <h1>Logo</h1> <!-- Ganti dengan logo Anda -->
+            <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo">
         </div>
         <h2 class="text-center">Daftar</h2>
 <form method="POST" action="/unkpresent/devops/"> <!-- Ganti dengan URL yang benar -->
@@ -45,7 +50,7 @@
             <div class="mb-3">
                 <input type="password" name="password" class="form-control" placeholder="Password" required>
             </div>
-            <button type="submit" name="register" class="btn btn-primary w-100">Daftar</button>
+            <button type="submit" name="register" class="btn btn-success w-100">Daftar</button>
         </form>
 
         <?php if (isset($_SESSION['error'])): ?>
