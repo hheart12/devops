@@ -56,7 +56,7 @@ $user = $_SESSION['user'];
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="card text-center mb-4 shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">Daftar Barang</h5>
@@ -64,7 +64,7 @@ $user = $_SESSION['user'];
                         <a href="./barang_list.php" class="btn btn-custom">Lihat Daftar</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-4">
                 <div class="card text-center mb-4 shadow-sm">
                     <div class="card-body">
