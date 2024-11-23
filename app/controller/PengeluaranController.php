@@ -64,6 +64,11 @@ class PengeluaranController {
     }
 
 
+    public function deletePengeluaran($id) {
+        return $this->pengeluaranModel->deletePengeluaran($id);
+    }
+
+
 }
 
 // Instantiate and handle the request

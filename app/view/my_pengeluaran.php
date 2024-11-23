@@ -24,6 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_pengeluaran'])
     header("Location: my_pengeluaran.php"); // Refresh halaman setelah update
     exit();
 }
+
+// Delete Barang
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])) {
+    $pengeluaranController->deletePengeluaran($_POST['id']);
+    header("Location: my_pengeluaran.php"); // Refresh halaman setelah delete
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +69,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_pengeluaran'])
                                     <input type="number" name="jumlah" value="<?= $pengeluaran['jumlah']; ?>" class="form-control form-control-sm" required>
                                     <textarea name="keterangan" class="form-control form-control-sm" required><?= $pengeluaran['keterangan']; ?></textarea>
                                     <button type="submit" name="update_pengeluaran" class="btn btn-primary btn-sm mt-1">Update</button>
+
+                                    <button type="submit" name="delete_pengeluaran" class="btn btn-primary btn-sm mt-1">Delete</button>
+
                                 </form>
+                                <
                             </td>
                         </tr>
                     <?php endforeach; ?>
