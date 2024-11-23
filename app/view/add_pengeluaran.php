@@ -158,9 +158,13 @@ if (!isset($_SESSION['user'])) {
             margin-right: 10px;
         }
         .logo img {
-            max-width: 150%;
+            max-width: 100%;
             height: auto;
             width: 100px;
+        }
+        .navbar-brand img {
+            height: 60px;
+            margin-right: 15px;
         }
     </style>
 </head>

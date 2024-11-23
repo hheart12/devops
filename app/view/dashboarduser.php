@@ -44,7 +44,7 @@ $user = $_SESSION['user'];
         }
 
         .navbar-brand img {
-            height: 40px;
+            height: 60px;
             margin-right: 15px;
         }
 
@@ -129,7 +129,7 @@ $user = $_SESSION['user'];
         }
 
         .logo img {
-            max-width: 150%;
+            max-width: 100%;
             height: auto;
             width: 100px;
         }
