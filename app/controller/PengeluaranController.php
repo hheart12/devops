@@ -45,7 +45,7 @@ class PengeluaranController {
 
                 // Attempt to add the pengeluaran record
                 if ($this->addPengeluaran($data, $userId)) {
-                    header("Location: ../view/pengeluaran_list.php");
+                    header("Location: ../view/my_pengeluaran.php");
                     exit();
                 } else {
                     echo "Gagal menambahkan pengeluaran.";
