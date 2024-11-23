@@ -39,9 +39,24 @@ $user = $_SESSION['user'];
             margin-top: 20px;
             margin-bottom: 30px;
         }
+        .navbar-brand img {
+            height: 40px; /* Ukuran logo */
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo">
+                <span class="fw-bold">Catatan Pengeluaran</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Konten Dashboard -->
     <div class="container mt-5">
         <h1 class="text-center welcome-message">Welcome, <?= htmlspecialchars($user['nama']); ?>!</h1>
         <p class="text-center">Email: <?= htmlspecialchars($user['email']); ?></p>
@@ -56,15 +71,6 @@ $user = $_SESSION['user'];
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-md-4">
-                <div class="card text-center mb-4 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Daftar Barang</h5>
-                        <p class="card-text">Lihat semua barang yang tersedia untuk dijual.</p>
-                        <a href="./barang_list.php" class="btn btn-custom">Lihat Daftar</a>
-                    </div>
-                </div>
-            </div> -->
             <div class="col-md-4">
                 <div class="card text-center mb-4 shadow-sm">
                     <div class="card-body">
