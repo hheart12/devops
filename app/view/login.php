@@ -22,6 +22,8 @@
         .logo {
             text-align: center;
             margin-bottom: 20px;
+            max-width: 50px;
+            max-height: 50px;
         }
         .error, .success {
             text-align: center;
