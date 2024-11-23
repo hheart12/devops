@@ -47,6 +47,14 @@ if (!isset($_SESSION['user'])) {
     </style>
 </head>
 <body class="bg-light">
+<nav class="navbar navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo">
+                <span class="fw-bold">Catatan Pengeluaran</span>
+            </a>
+        </div>
+    </nav>
     <div class="container mt-5">
         <h1 class="text-center mb-4">Tambah Pengeluaran</h1>
         <br>

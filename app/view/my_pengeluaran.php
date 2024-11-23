@@ -43,6 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
     <link rel="stylesheet" href="/unkpresent/devops/public/css/style.css">
 </head>
 <body class="bg-light">
+<nav class="navbar navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo">
+                <span class="fw-bold">Catatan Pengeluaran</span>
+            </a>
+        </div>
+    </nav>
     <div class="container mt-5">
         <h1 class="text-center mb-4">Pengeluaran Anda</h1>
         <a href="dashboarduser.php" class="btn btn-secondary mb-3">Kembali ke Dashboard</a>
