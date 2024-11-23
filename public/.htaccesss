@@ -1,0 +1,6 @@
+RewriteEngine On
+
+# Mengarahkan permintaan ke index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /unkpresent/devops/index.php [QSA,L]
