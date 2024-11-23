@@ -131,7 +131,7 @@ $user = $_SESSION['user'];
         .logo img {
             max-width: 100%;
             height: auto;
-            width: 100px;
+            width: 150px;
         }
 
         .error, .success {

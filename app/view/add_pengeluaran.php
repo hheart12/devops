@@ -157,6 +157,11 @@ if (!isset($_SESSION['user'])) {
             height: 40px;
             margin-right: 10px;
         }
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            width: 150px;
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -172,7 +177,7 @@ if (!isset($_SESSION['user'])) {
 
     <!-- Konten tambah pengeluaran -->
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Tambah Pengeluaran</h1>
+        <h1 class="text-center mb-4"><b>Tambah Pengeluaran</b></h1>
         <a href="dashboarduser.php" class="btn btn-secondary mt-3 mb-3">Kembali ke Dashboard</a>
         <form method="POST" action="../controller/PengeluaranController.php" class="shadow-sm p-4 bg-white rounded">
             <div class="mb-3">

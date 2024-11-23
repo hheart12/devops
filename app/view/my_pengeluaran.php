@@ -77,6 +77,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
     .navbar-light .navbar-nav .nav-link:hover {
             color: #d1e0e0 !important;
         }
+    .logo img {
+            max-width: 100%;
+            height: auto;
+            width: 150px;
+        }
 
     
     </style>
