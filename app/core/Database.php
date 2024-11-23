@@ -8,43 +8,30 @@ use PDOException;
 define("APP_PATH", "http://103.59.95.145/unkpresent/devops/");
 
 class Database {
-
-    private $host = 'localhost';
-    private $db_name = 'db_pengeluaran';
-    private $username = 'testadmin';
-    private $password = '@Unklab12345';
-    public $conn;
-
-    // Menyimpan instance tunggal kelas Database
     private static $instance = null;
+    private static $connection;
 
-    // Konstruktor privat untuk mencegah instansiasi langsung
-    private function __construct() {}
-
-    // Metode untuk mendapatkan instance dari koneksi database
-    public static function getInstance() {
-        if (self::$instance == null) {
-            self::$instance = new self();
+    // Constructor private untuk mencegah instansiasi langsung
+    private function __construct() {
+        try {
+            // Koneksi ke database menggunakan PDO
+            self::$connection = new PDO(
+                'mysql:host=localhost;dbname=db_catatpengeluaran', 
+                'testadmin', 
+                '@Unklab12345'
+            );
+            self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            // Tangani exception jika koneksi gagal
+            die("Connection failed: " . $e->getMessage());
         }
-        return self::$instance;
     }
 
-    // Metode untuk mendapatkan koneksi
-    public function getConnection() {
-        if ($this->conn == null) {
-            try {
-                $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-                $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $exception) {
-                echo "Connection error: " . $exception->getMessage();
-            }
+    // Ubah getConnection menjadi metode statis
+    public static function getConnection() {
+        if (self::$instance === null) {
+            self::$instance = new Database();
         }
-        return $this->conn;
-    }
-
-    // Menonaktifkan kloning instance
-    private function __clone() {}
-
-    // Menonaktifkan destruktur jika ada
-    private function __wakeup() {}
+        return self::$connection;
+    }
 }
