@@ -8,30 +8,22 @@ use PDOException;
 define("APP_PATH", "http://103.59.95.145/unkpresent/devops/");
 
 class Database {
-    private static $instance = null;
-    private static $connection;
 
-    // Constructor private untuk mencegah instansiasi langsung
-    private function __construct() {
+    
+    private $host = 'localhost';
+    private $db_name = 'db_catatpengeluaran';
+    private $username = 'testadmin';
+    private $password = '@Unklab12345';
+    public $conn;
+
+    public function getConnection() {
+        $this->conn = null;
         try {
-            // Koneksi ke database menggunakan PDO
-            self::$connection = new PDO(
-                'mysql:host=localhost;dbname=db_catatpengeluaran', 
-                'testadmin', 
-                '@Unklab12345'
-            );
-            self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            // Tangani exception jika koneksi gagal
-            die("Connection failed: " . $e->getMessage());
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $exception) {
+            echo "Connection error: " . $exception->getMessage();
         }
-    }
-
-    // Mendapatkan koneksi database jika sudah ada, atau membuat yang baru jika belum ada
-    public static function getConnection() {
-        if (self::$instance === null) {
-            self::$instance = new Database();
-        }
-        return self::$connection;
+        return $this->conn;
     }
 }
