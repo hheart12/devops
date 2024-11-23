@@ -19,11 +19,11 @@ $user = $_SESSION['user'];
     <link rel="stylesheet" href="/unkpresent/devops/public/css/style.css">
     <style>
         body {
-            background-color: #f4f7fc;
+            background-color: #fafafa;
             font-family: 'Arial', sans-serif;
         }
         .card {
-            border-radius: 12px;
+            border-radius: 15px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
@@ -47,6 +47,9 @@ $user = $_SESSION['user'];
             height: 40px;
             margin-right: 15px;
         }
+        .container {
+            max-width: 1200px;
+        }
         .welcome-message {
             font-size: 1.75rem;
             font-weight: 600;
@@ -67,21 +70,33 @@ $user = $_SESSION['user'];
             color: #777;
             margin-bottom: 20px;
         }
-        .container {
-            max-width: 1200px;
+        .text-center {
+            text-align: center;
         }
         .card-deck .card {
             margin-bottom: 30px;
-        }
-        .btn-danger {
-            border-radius: 30px;
-            font-size: 16px;
-            padding: 12px 25px;
         }
         .footer {
             text-align: center;
             margin-top: 40px;
             color: #888;
+        }
+        .register-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            width: 100px;
+        }
+        .error, .success {
+            text-align: center;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -103,31 +118,22 @@ $user = $_SESSION['user'];
         <p class="text-center text-muted">Email: <?= htmlspecialchars($user['email']); ?></p>
 
         <!-- Cards Section -->
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
             <div class="col">
-                <div class="card text-center shadow-sm">
+                <div class="card shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">Tambah Barang</h5>
                         <p class="card-text">Tambahkan barang baru yang ingin Anda jual.</p>
-                        <a href="./add_pengeluaran.php" class="btn btn-custom">Tambah Barang</a>
+                        <a href="./add_pengeluaran.php" class="btn btn-custom w-100">Tambah Barang</a>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card text-center shadow-sm">
+                <div class="card shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">Barang yang Anda Jual</h5>
                         <p class="card-text">Kelola barang-barang yang telah Anda jual.</p>
-                        <a href="./my_pengeluaran.php" class="btn btn-custom">Lihat Barang</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card text-center shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Laporan Pengeluaran</h5>
-                        <p class="card-text">Lihat laporan pengeluaran yang telah Anda buat.</p>
-                        <a href="./laporan_pengeluaran.php" class="btn btn-custom">Lihat Laporan</a>
+                        <a href="./my_pengeluaran.php" class="btn btn-custom w-100">Lihat Barang</a>
                     </div>
                 </div>
             </div>
@@ -136,7 +142,7 @@ $user = $_SESSION['user'];
         <!-- Logout Button -->
         <div class="text-center mt-5">
             <form method="POST" action="../view/logout.php">
-                <button type="submit" name="logout" class="btn btn-danger">Logout</button>
+                <button type="submit" name="logout" class="btn btn-danger w-50">Logout</button>
             </form>
         </div>
     </div>
