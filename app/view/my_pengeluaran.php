@@ -25,11 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_pengeluaran'])
     exit();
 }
 
-// Delete Barang
+// Handle the form submission for deleting pengeluaran
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])) {
     $pengeluaranController->deletePengeluaran($_POST['id']);
     header("Location: my_pengeluaran.php"); // Refresh halaman setelah delete
-    exit();
+    exit();
 }
 ?>
 
@@ -65,15 +65,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
                             <td><?= htmlspecialchars($pengeluaran['keterangan']); ?></td>
                             <td>
                                 <form method="POST" action="">
+                                    <!-- Input hidden untuk ID pengeluaran -->
                                     <input type="hidden" name="id" value="<?= $pengeluaran['id']; ?>">
+
+                                    <!-- Input form untuk jumlah dan keterangan -->
                                     <input type="number" name="jumlah" value="<?= $pengeluaran['jumlah']; ?>" class="form-control form-control-sm" required>
                                     <textarea name="keterangan" class="form-control form-control-sm" required><?= $pengeluaran['keterangan']; ?></textarea>
+                                    
+                                    <!-- Tombol untuk update pengeluaran -->
                                     <button type="submit" name="update_pengeluaran" class="btn btn-primary btn-sm mt-1">Update</button>
-
-                                    <button type="submit" name="delete_pengeluaran" class="btn btn-primary btn-sm mt-1">Delete</button>
-
                                 </form>
-                                <
+                            </td>
+                            <td>
+                                <!-- Form untuk Hapus Pengeluaran -->
+                                <form method="POST" action="">
+                                    <!-- Input hidden untuk ID pengeluaran -->
+                                    <input type="hidden" name="id" value="<?= $pengeluaran['id']; ?>">
+                                    
+                                    <!-- Tombol Hapus Pengeluaran -->
+                                    <button type="submit" name="delete_pengeluaran" class="btn btn-danger btn-sm w-100 mt-2" onclick="return confirm('Anda yakin ingin menghapus catatan ini?')">Hapus Pengeluaran</button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -85,6 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
             </tbody>
         </table>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -15,7 +15,6 @@ class PengeluaranModel {
         $this->conn = $database->getConnection();
     }
 
-        // Method untuk menghapus pengeluaran berdasarkan ID
 
     // Get all records from tbl_pengeluaran
     public function getAllPengeluaran() {
@@ -58,12 +57,21 @@ class PengeluaranModel {
         return $stmt->execute();
     }
 
-//     public function deletePengeluaran($id) {
-//         $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
-//         $stmt = $this->conn->prepare($query);
-//         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-//         return $stmt->execute();
-//     }
+        // PengeluaranModel.php
+    public function deletePengeluaran($id) {
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+
+        // Cek apakah penghapusan berhasil
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
+
+
+
 
 
 

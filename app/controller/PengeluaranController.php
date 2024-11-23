@@ -55,7 +55,7 @@ class PengeluaranController {
             }
         }
 
-        // Handle other types of requests (like updating, etc.) if needed
+
     }
 
     // Show pengeluaran for a specific user
@@ -63,10 +63,18 @@ class PengeluaranController {
         return $this->pengeluaranModel->getPengeluaranByUser($userId);
     }
 
+    // PengeluaranController.php
+    public function deletePengeluaran($id) {
+        // Memanggil method deletePengeluaran dari model
+        if ($this->pengeluaranModel->deletePengeluaran($id)) {
+            return true; // Penghapusan berhasil
+        }
+        return false; // Penghapusan gagal
+    }
 
-//     public function deletePengeluaran($id) {
-//         return $this->pengeluaranModel->deletePengeluaran($id);
-//     }
+
+
+
 
 
 }
