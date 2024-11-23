@@ -1,7 +1,7 @@
 <?php
 namespace Model;
 
-require_once _DIR_ . '/../core/Database.php'; // Ensure the path is correct
+require_once __DIR__ . '/../core/Database.php'; // Ensure the path is correct
 
 use Core\Database;
 use PDO;
