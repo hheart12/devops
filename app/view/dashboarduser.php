@@ -19,22 +19,23 @@ $user = $_SESSION['user'];
     <link rel="stylesheet" href="/unkpresent/devops/public/css/style.css">
     <style>
         body {
-            background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradasi biru yang lembut */
+            background: #d4edda; /* Hijau pastel yang kalem */
             font-family: 'Arial', sans-serif;
-            color: #fff;
+            color: #333;
         }
         .card {
             border-radius: 15px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background-color: #ffffff; /* Warna latar belakang kartu */
+            background-color: #ffffff; /* Latar belakang kartu putih untuk kontras */
             color: #333;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         .card:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
         }
         .btn-custom {
-            background-color: #28a745; /* Warna hijau untuk tombol */
+            background-color: #28a745; /* Hijau cerah untuk tombol */
             border-color: #28a745;
             border-radius: 30px;
             padding: 12px 30px;
@@ -44,8 +45,8 @@ $user = $_SESSION['user'];
             border-color: #1e7e34;
         }
         .navbar {
-            background-color: #1a73e8; /* Biru cerah untuk navbar */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background-color: #5cb85c; /* Hijau lembut untuk navbar */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan ringan untuk navbar */
         }
         .navbar-brand img {
             height: 40px;
@@ -57,7 +58,7 @@ $user = $_SESSION['user'];
         .welcome-message {
             font-size: 2rem;
             font-weight: 600;
-            color: #fff;
+            color: #333;
             margin-top: 30px;
             margin-bottom: 20px;
         }
@@ -80,7 +81,7 @@ $user = $_SESSION['user'];
         .footer {
             text-align: center;
             margin-top: 40px;
-            color: #fff;
+            color: #333;
         }
         .register-container {
             max-width: 400px;
