@@ -9,15 +9,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #fafafa;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
         }
         .login-container {
             max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
         .logo {
             text-align: center;
@@ -26,44 +33,78 @@
         .logo img {
             max-width: 100%;
             height: auto;
-            width: 100px; /* Atur ukuran logo di sini */
+            width: 80px; /* Ukuran logo */
         }
-        .error, .success {
-            text-align: center;
-            margin-top: 10px;
+        .form-control {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding-left: 40px;
+            height: 50px;
         }
-</style>
-
+        .form-control:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+        }
+        .input-icon {
+            position: relative;
+        }
+        .input-icon .icon {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            font-size: 20px;
+            color: #6a11cb;
+        }
+        button {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            border: none;
+            border-radius: 8px;
+            height: 50px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button:hover {
+            background: linear-gradient(to left, #6a11cb, #2575fc);
+        }
+        .text-muted {
+            color: #6c757d !important;
+        }
+    </style>
 </head>
 <body>
-    <div class="login-container mt-5">
+    <div class="login-container">
         <div class="logo">
-        <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo">
+            <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo">
         </div>
-        <h2 class="text-center">Login</h2>
+        <h2 class="text-center text-dark">Welcome Back!</h2>
+        <p class="text-center text-muted">Please login to continue</p>
         <form method="POST" action="/unkpresent/devops/index.php">
-            <div class="mb-3">
+            <div class="mb-3 input-icon">
+                <span class="icon"><i class="bi bi-envelope-fill"></i></span>
                 <input type="email" name="email" class="form-control" placeholder="Email" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 input-icon">
+                <span class="icon"><i class="bi bi-lock-fill"></i></span>
                 <input type="password" name="password" class="form-control" placeholder="Password" required>
             </div>
             <button type="submit" name="login" class="btn btn-success w-100">Login</button>
         </form>
 
         <?php if (isset($_SESSION['error'])): ?>
-            <p class="error text-danger"><?= htmlspecialchars($_SESSION['error']); ?></p>
+            <p class="error text-danger text-center mt-3"><?= htmlspecialchars($_SESSION['error']); ?></p>
             <?php unset($_SESSION['error']); ?>
         <?php endif; ?>
 
         <?php if (isset($_SESSION['success'])): ?>
-            <p class="success text-success"><?= htmlspecialchars($_SESSION['success']); ?></p>
+            <p class="success text-success text-center mt-3"><?= htmlspecialchars($_SESSION['success']); ?></p>
             <?php unset($_SESSION['success']); ?>
         <?php endif; ?>
 
-        <p class="text-center mt-3">Jika Anda belum terdaftar, silakan <a href="/unkpresent/devops/app/view/register.php">daftar di sini</a>.</p>
+        <p class="text-center mt-3 text-muted">Don’t have an account? <a href="/unkpresent/devops/app/view/register.php" class="text-primary fw-bold">Register here</a>.</p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
 </body>
 </html>
