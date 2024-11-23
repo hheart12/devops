@@ -1,45 +1,43 @@
 <?php
-namespace Controller;
+require_once('../app/models/Pengeluaran.php');
+require_once('../app/core/Controller.php');
 
-use Model\PengeluaranModel;
-
-class PengeluaranController {
-
-    public function tambahPengeluaran() {
-        session_start();
-
+class PengeluaranController extends Controller {
+    public function index() {
+        // Mengecek session
         if (!isset($_SESSION['user_id'])) {
-            header("Location: " . APP_PATH . "index.php");
+            header('Location: /devops/?controller=user&action=login');
             exit();
         }
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $tanggal = $_POST['tanggal'];
-            $keterangan = $_POST['keterangan'];
-            $jumlah = $_POST['jumlah'];
-            $user_id = $_SESSION['user_id'];
-
-            $pengeluaranModel = new PengeluaranModel();
-            if ($pengeluaranModel->createPengeluaran($user_id, $tanggal, $keterangan, $jumlah)) {
-                header("Location: " . APP_PATH . "index.php");
-            } else {
-                echo "Failed to add pengeluaran!";
-            }
-        }
-        require_once '../view/tambahpengeluaran.php';
+        $pengeluaran = new Pengeluaran();
+        $data = $pengeluaran->getByUserId($_SESSION['user_id']);
+        $this->view('pengeluaran', $data);
     }
 
-    public function daftarPengeluaran() {
-        session_start();
+    public function add() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $tanggal = $_POST['tanggal'];
+            $jumlah = $_POST['jumlah'];
+            $keterangan = $_POST['keterangan'];
+            $user_id = $_SESSION['user_id'];
 
-        if (!isset($_SESSION['user_id'])) {
-            header("Location: " . APP_PATH . "index.php");
-            exit();
+            $pengeluaran = new Pengeluaran();
+            if ($pengeluaran->add($user_id, $tanggal, $jumlah, $keterangan)) {
+                $_SESSION['success'] = "Pengeluaran berhasil ditambahkan!";
+                header('Location: /devops/?controller=pengeluaran&action=index');
+            } else {
+                $_SESSION['error'] = "Gagal menambahkan pengeluaran!";
+            }
         }
 
-        $user_id = $_SESSION['user_id'];
-        $pengeluaranModel = new PengeluaranModel();
-        $pengeluaran = $pengeluaranModel->getPengeluaranByUser($user_id);
-        require_once '../view/pengeluaran.php';
+        $this->view('add_pengeluaran');
+    }
+
+    public function logout() {
+        session_unset();
+        session_destroy();
+        header('Location: /devops/?controller=user&action=login');
+        exit();
     }
 }

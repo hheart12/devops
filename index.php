@@ -1,36 +1,25 @@
 <?php
-session_start(); // Memulai session
+// Memulai session untuk login dan user validation
+session_start();
 
-require_once './app/core/Database.php';
-require_once './app/model/UserModel.php';
-require_once './app/controller/UserController.php';
+// Autoloader untuk mengimpor kelas-kelas
+require_once('../app/core/Controller.php');
+require_once('../app/core/Database.php');
+require_once('../app/controllers/UserController.php');
+require_once('../app/controllers/PengeluaranController.php');
 
-use Controller\UserController;
+// Menentukan controller dan action berdasarkan URL
+$controller = isset($_GET['controller']) ? $_GET['controller'] : 'user';
+$action = isset($_GET['action']) ? $_GET['action'] : 'login';
 
-// Cek apakah pengguna sudah login
-if (isset($_SESSION['user'])) {
-    header("Location: /tokobekas/app/view/dashboarduser.php");
-    exit();
+// Membuat controller berdasarkan URL
+$controllerName = ucfirst($controller) . 'Controller';
+$controllerObject = new $controllerName();
+
+// Menjalankan action yang dipilih
+if(method_exists($controllerObject, $action)) {
+    $controllerObject->$action();
+} else {
+    echo "Action not found!";
 }
-
-$userController = new UserController();
-
-// Tangani login
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    
-    $userController->login($email, $password);
-}
-
-// Tangani registrasi
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
-    $nama = $_POST['nama'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    
-    $userController->register($nama, $email, $password);
-}
-
-Tampilkan halaman login secara default
-// include './app/view/login.php';
+?>

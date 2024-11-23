@@ -1,66 +1,51 @@
 <?php
-namespace Controller;
+require_once('../app/models/User.php');
+require_once('../app/core/Controller.php');
 
-use Model\UserModel;
-
-class UserController {
-    private $userModel;
-
-    public function __construct() {
-        error_reporting(E_ALL & ~E_NOTICE);
-        session_start(); // Memastikan session dimulai di sini
-        $this->userModel = new UserModel();
-    }
-
-    public function login($email, $password) {
-        $user = $this->userModel->login($email, $password);
-
-        if ($user) {
-            $_SESSION['user'] = $user;
-            header("Location:  /unkpresent/devops/app/view/pengeluaran.php");
-            exit();
-        } else {
-            $_SESSION['error'] = $this->userModel->emailExists($email) ? 
-                "Invalid/unmatched role, email or password." : "Email not registered!";
-            header("Location: /tokobekas/index.php");
+class UserController extends Controller {
+    public function login() {
+        // Memeriksa apakah sudah login
+        if (isset($_SESSION['user_id'])) {
+            header('Location: /devops/?controller=pengeluaran&action=index');
             exit();
         }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $user = new User();
+            $userData = $user->getByEmail($email);
+
+            if ($userData && password_verify($password, $userData['password'])) {
+                $_SESSION['user_id'] = $userData['id'];
+                $_SESSION['success'] = "Login berhasil!";
+                header('Location: /devops/?controller=pengeluaran&action=index');
+            } else {
+                $_SESSION['error'] = "Email atau password salah!";
+                header('Location: /devops/?controller=user&action=login');
+            }
+            exit();
+        }
+
+        $this->view('login');
     }
 
-    public function logout() {
-        session_unset();
-        session_destroy();
-        header("Location:  /unkpresent/devops/app/view/login.php");
-        exit();
-    }
+    public function register() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nama = $_POST['nama'];
+            $email = $_POST['email'];
+            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-public function register($nama, $email, $password) {
-    // Start session if not started yet
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
+            $user = new User();
+            if ($user->register($nama, $email, $password)) {
+                $_SESSION['success'] = "Registrasi berhasil!";
+                header('Location: /devops/?controller=user&action=login');
+            } else {
+                $_SESSION['error'] = "Gagal registrasi!";
+            }
+        }
 
-    // Check if email already exists
-    if ($this->userModel->emailExists($email)) {
-        $_SESSION['error'] = "Email already registered!";
-        // Redirect back to register page
-        header("Location:  /unkpresent/devops/app/view/register.php");
-        exit();
-    }
-
-    // Try to register the user
-    if ($this->userModel->register($nama, $email, $password)) {
-        // Set success message in session
-        $_SESSION['success'] = "Registration successful! Please log in.";
-        header("Location:  /unkpresent/devops/app/view/login.php");
-        exit();
-    } else {
-        $_SESSION['error'] = "Failed to register!";
-        header("Location:  /unkpresent/devops/app/view/register.php");
-        exit();
+        $this->view('register');
     }
 }
-
-}
-
-$controller = new UserController();
