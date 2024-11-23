@@ -45,8 +45,8 @@ if (!isset($_SESSION['user'])) {
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
         }
         .navbar-brand img {
-                height: 40px; /* Ukuran logo */
-                margin-right: 10px;
+            height: 40px; /* Ukuran logo */
+            margin-right: 10px;
         }
 
     </style>
