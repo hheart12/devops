@@ -1,7 +1,8 @@
 <?php
 namespace Controller;
 
-require_once _DIR_ . '/../model/PengeluaranModel.php'; // Update the path to use PengeluaranModel
+// Correct the constant to __DIR__
+require_once __DIR__ . '/../model/PengeluaranModel.php'; // Update the path to use PengeluaranModel
 
 use Model\PengeluaranModel;
 
