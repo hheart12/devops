@@ -4,22 +4,27 @@ namespace Core;
 use PDO;
 use PDOException;
 
-// Pastikan APP_PATH didefinisikan di tempat yang lebih tepat, misalnya di config.
-define("APP_PATH", "http://103.59.95.145/unkpresent/devops/");
+// define base URL path
+define("APP_PATH", "http://103.49.95.145/unkpresent/devops/");
+
 
 class Database {
-    // Konstruktor menjadi publik
-    public function __construct() {
+
+    
+    private $host = 'localhost';
+    private $db_name = 'db_catatpengeluaran';
+    private $username = 'testadmin';
+    private $password = '@Unklab12345';
+    public $conn;
+
+    public function getConnection() {
+        $this->conn = null;
         try {
-            self::$connection = new PDO(
-                'mysql:host=localhost;dbname=db_catatpengeluaran', 
-                'testadmin', 
-                '@Unklab12345'
-            );
-            self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            die("Connection failed: " . $e->getMessage());
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $exception) {
+            echo "Connection error: " . $exception->getMessage();
         }
+        return $this->conn;
     }
 }
-
