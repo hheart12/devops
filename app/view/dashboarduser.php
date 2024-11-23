@@ -18,26 +18,40 @@ $user = $_SESSION['user'];
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/unkpresent/devops/public/css/style.css">
     <style>
+        html, body {
+            height: 100%; /* Pastikan html dan body mengisi seluruh tinggi layar */
+            margin: 0; /* Menghilangkan margin default */
+            padding: 0; /* Menghilangkan padding default */
+        }
+
         body {
+            display: flex;
+            flex-direction: column; /* Menggunakan flexbox untuk menyusun elemen secara vertikal */
             background: linear-gradient(135deg, #d6e8d5, #b5b8b1); /* Gradient hijau dan silver */
             font-family: 'Arial', sans-serif;
             color: #333;
+            min-height: 100%; /* Memastikan body mengisi 100% dari tinggi layar */
         }
+
         .navbar {
             background: linear-gradient(135deg, #4CAF50, #8d8f85); /* Hijau dan silver untuk navbar */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
+
         .navbar-brand {
             font-weight: bold;
             font-size: 1.5rem;
         }
+
         .navbar-brand img {
             height: 40px;
             margin-right: 15px;
         }
+
         .navbar-light .navbar-nav .nav-link {
             color: #fff !important;
         }
+
         .navbar-light .navbar-nav .nav-link:hover {
             color: #d1e0e0 !important;
         }
@@ -87,14 +101,14 @@ $user = $_SESSION['user'];
 
         .footer {
             text-align: center;
-            margin-top: 60px;
+            margin-top: auto; /* Footer akan berada di bagian bawah */
             color: #333;
             font-size: 0.9rem;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            flex: 1; /* Menggunakan ruang yang tersedia agar konten mengisi layar */
+            padding: 20px;
         }
 
         .welcome-message {
