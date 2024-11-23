@@ -32,7 +32,7 @@
 <body>
     <div class="login-container mt-5">
         <div class="logo">
-            <h1>Logo</h1> <!-- Ganti dengan logo Anda -->
+        <img src="/logo/logoPengeluaran.png" alt="Logo">
         </div>
         <h2 class="text-center">Login</h2>
         <form method="POST" action="/unkpresent/devops/index.php">
