@@ -18,10 +18,12 @@ class UserController {
                 header("Location: " . APP_PATH . "pengeluaran");
                 exit();
             } else {
-                echo "Login Failed!";
+                // Tampilkan error jika login gagal
+                $errorMessage = "Login Failed!";
             }
         }
 
+        // Tampilkan halaman login
         include_once 'app/views/login.php';
     }
 
@@ -34,14 +36,17 @@ class UserController {
             $userModel = new UserModel();
             $userModel->registerUser($nama, $email, $password);
 
+            // Redirect ke halaman login setelah registrasi berhasil
             header("Location: " . APP_PATH . "login");
             exit();
         }
 
+        // Tampilkan halaman registrasi
         include_once 'app/views/register.php';
     }
 
     public function logout() {
+        // Hapus session dan redirect ke halaman login
         session_destroy();
         header("Location: " . APP_PATH . "login");
         exit();

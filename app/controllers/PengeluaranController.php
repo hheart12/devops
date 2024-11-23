@@ -24,10 +24,11 @@ class PengeluaranController {
             $pengeluaranModel = new PengeluaranModel();
             $pengeluaranModel->addPengeluaran($tanggal, $jumlah, $keterangan);
 
-            // Redirect ke halaman pengeluaran
+            // Redirect ke halaman pengeluaran setelah berhasil menambah pengeluaran
             header("Location: " . APP_PATH . "pengeluaran");
             exit();
         }
+
         // Tampilkan form tambah pengeluaran
         include_once 'app/views/add_pengeluaran.php';
     }
