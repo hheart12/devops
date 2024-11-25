@@ -78,7 +78,7 @@
         <div class="logo">
             <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo">
         </div>
-        <h2 class="text-center text-dark">Welcome!</h2>
+        <h2 class="text-center text-dark">JONO GANTENG</h2>
         <p class="text-center text-muted">Please login to continue</p>
         <form method="POST" action="/unkpresent/devops/index.php">
             <div class="mb-3 input-icon">
