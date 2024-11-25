@@ -136,7 +136,7 @@ $user = $_SESSION['user'];
     <div class="container-fluid"> <!-- Menggunakan container-fluid untuk memenuhi lebar penuh -->
         <div class="d-flex align-items-center">
             <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo" style="height: 60px;">
-            <span style="font-weight: bold; font-size: 1.5rem; color: #FFFFFF; margin-left: 10px;">Catatan Pengeluaran </span>
+            <span style="font-weight: bold; font-size: 1.5rem; color: #FFFFFF; margin-left: 10px;">Catatan Pengeluaran 1</span>
         </div>
     </div>
 </nav>
