@@ -28,7 +28,7 @@ $user = $_SESSION['user'];
             display: flex;
             flex-direction: column;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                        url('/unkpresent/devops/public/image/your-background-image.jpg') no-repeat center center/cover;
+                        url('/unkpresent/devops/public/image/background.jpg') no-repeat center center/cover;
             font-family: 'Arial', sans-serif;
             color: #fff;
             min-height: 100%;
