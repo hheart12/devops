@@ -81,7 +81,7 @@
         <p class="text-center text-muted">Sign up to get started</p>
 
         <!-- Registration Form -->
-        <form method="POST" action="/controller/registerHandler.php">
+        <form method="POST" action="/unkpresent/devops/">
             <div class="mb-3 input-icon">
                 <span class="icon"><i class="bi bi-person-fill"></i></span>
                 <input type="text" name="nama" class="form-control" placeholder="Full Name" required>
