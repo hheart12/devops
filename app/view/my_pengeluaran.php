@@ -40,67 +40,98 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pengeluaran Anda</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/unkpresent/devops/public/css/style.css">
     <style>
-    html, body {
+        html, body {
             height: 100%;
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
         }
 
-    body {
+        body {
             display: flex;
             flex-direction: column;
-            background: linear-gradient(135deg, #d6e8d5, #b5b8b1); /* Gradient hijau dan silver */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('/unkpresent/devops/public/image/background.jpg') no-repeat center center/cover;
+            color: #fff;
             min-height: 100%;
         }
-    .navbar-brand img {
-            height: 60px; /* Ukuran logo */
-            margin-right: 15px;
+
+        .navbar {
+            background: rgba(76, 175, 80, 0.9);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-    .navbar {
-        background: linear-gradient(135deg, #4CAF50, #8d8f85); /* Hijau dan silver untuk navbar */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.5rem;
         }
 
-    .navbar-brand {
-        font-weight: bold;
-        font-size: 1.5rem;
-        color: #FFFFFF;
+        .navbar-brand img {
+            height: 60px;
         }
 
-    .navbar-light .navbar-nav .nav-link {
-        color: #fff !important;
+        .container {
+            flex: 1;
+            padding: 20px;
         }
 
-    .navbar-light .navbar-nav .nav-link:hover {
-        color: #d1e0e0 !important;
+        .table {
+            background-color: rgba(255, 255, 255, 0.8); /* Transparansi pada tabel */
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
-    .logo img {
-        max-width: 100%;
-        height: auto;
-        width: 100px;
+
+        .table th, .table td {
+            color: #333;
         }
-    
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .btn {
+            font-weight: bold;
+        }
+
+        .btn-secondary {
+            background-color: rgba(108, 117, 125, 0.9);
+        }
+
+        .footer {
+            text-align: center;
+            color: #fff;
+            font-size: 0.9rem;
+            margin-top: auto;
+            padding: 10px;
+        }
     </style>
 </head>
-
-<body class="bg-light">
-<nav class="navbar navbar-light bg-light shadow-sm">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
                 <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo">
-                <span class="fw-bold">Catatan Pengeluaran</span>
+                Catatan Pengeluaran
             </a>
         </div>
     </nav>
+
+    <!-- Konten -->
     <div class="container mt-5">
-        <h1 class="text-center mb-4"><b>Pengeluaran Anda</b></h1>
+        <h1>Pengeluaran Anda</h1>
         <a href="dashboarduser.php" class="btn btn-secondary mb-3">Kembali ke Dashboard</a>
 
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Tanggal</th>
@@ -118,25 +149,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
                             <td><?= htmlspecialchars($pengeluaran['keterangan']); ?></td>
                             <td>
                                 <form method="POST" action="">
-                                    <!-- Input hidden untuk ID pengeluaran -->
                                     <input type="hidden" name="id" value="<?= $pengeluaran['id']; ?>">
-
-                                    <!-- Input form untuk jumlah dan keterangan -->
                                     <input type="number" name="jumlah" value="<?= $pengeluaran['jumlah']; ?>" class="form-control form-control-sm" required>
                                     <textarea name="keterangan" class="form-control form-control-sm" required><?= $pengeluaran['keterangan']; ?></textarea>
-                                    
-                                    <!-- Tombol untuk update pengeluaran -->
                                     <button type="submit" name="update_pengeluaran" class="btn btn-success btn-sm mt-1">Update</button>
-                                    <button type="submit" name="delete_pengeluaran" class="btn btn-danger btn-sm w-100 mt-2" onclick="return confirm('Anda yakin ingin menghapus catatan ini?')">Hapus Pengeluaran</button>
-                                </form>
-                            </td>
-                            <td>
-                                <!-- Form untuk Hapus Pengeluaran -->
-                                <form method="POST" action="">
-                                    <!-- Input hidden untuk ID pengeluaran -->
-                                    <input type="hidden" name="id" value="<?= $pengeluaran['id']; ?>">
-                                    
-                                    <!-- Tombol Hapus Pengeluaran -->
+                                    <button type="submit" name="delete_pengeluaran" class="btn btn-danger btn-sm mt-1" onclick="return confirm('Anda yakin ingin menghapus catatan ini?')">Hapus</button>
                                 </form>
                             </td>
                         </tr>
@@ -149,6 +166,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
             </tbody>
         </table>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        &copy; 2024 Catatan Pengeluaran | All Rights Reserved
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
