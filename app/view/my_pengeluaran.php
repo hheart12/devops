@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_pengeluaran'])
         </div>
     </nav>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Pengeluaran Anda</h1>
+        <h1 class="text-center mb-4"><b>Pengeluaran Anda</b></h1>
         <a href="dashboarduser.php" class="btn btn-secondary mb-3">Kembali ke Dashboard</a>
 
         <table class="table table-striped table-bordered">
