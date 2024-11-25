@@ -19,22 +19,23 @@ $user = $_SESSION['user'];
     <link rel="stylesheet" href="/unkpresent/devops/public/css/style.css">
     <style>
         html, body {
-            height: 100%; /* Pastikan html dan body mengisi seluruh tinggi layar */
-            margin: 0; /* Menghilangkan margin default */
-            padding: 0; /* Menghilangkan padding default */
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
 
         body {
             display: flex;
-            flex-direction: column; /* Menggunakan flexbox untuk menyusun elemen secara vertikal */
-            background: linear-gradient(135deg, #d6e8d5, #b5b8b1); /* Gradient hijau dan silver */
+            flex-direction: column;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('/unkpresent/devops/public/image/your-background-image.jpg') no-repeat center center/cover;
             font-family: 'Arial', sans-serif;
-            color: #333;
-            min-height: 100%; /* Memastikan body mengisi 100% dari tinggi layar */
+            color: #fff;
+            min-height: 100%;
         }
 
         .navbar {
-            background: linear-gradient(135deg, #4CAF50, #8d8f85); /* Hijau dan silver untuk navbar */
+            background: rgba(76, 175, 80, 0.9);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
@@ -59,7 +60,7 @@ $user = $_SESSION['user'];
 
         .card {
             border-radius: 20px;
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparansi pada card */
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -71,7 +72,6 @@ $user = $_SESSION['user'];
 
         .card-body {
             padding: 25px;
-            background-color: #f7f7f7;
             border-radius: 15px;
         }
 
@@ -81,14 +81,8 @@ $user = $_SESSION['user'];
             color: #333;
         }
 
-        .card-text {
-            font-size: 1rem;
-            color: #777;
-            margin-bottom: 15px;
-        }
-
         .btn-custom {
-            background-color: #4CAF50; /* Hijau cerah untuk tombol */
+            background-color: rgba(76, 175, 80, 0.7); /* Transparansi pada tombol */
             border-radius: 30px;
             padding: 12px 30px;
             color: white;
@@ -97,18 +91,18 @@ $user = $_SESSION['user'];
         }
 
         .btn-custom:hover {
-            background-color: #45a049;
+            background-color: rgba(76, 175, 80, 0.9);
         }
 
         .footer {
             text-align: center;
-            margin-top: auto; /* Footer akan berada di bagian bawah */
-            color: #333;
+            margin-top: auto;
+            color: #fff;
             font-size: 0.9rem;
         }
 
         .container {
-            flex: 1; /* Menggunakan ruang yang tersedia agar konten mengisi layar */
+            flex: 1;
             padding: 20px;
         }
 
@@ -116,7 +110,7 @@ $user = $_SESSION['user'];
             font-size: 2.5rem;
             font-weight: 700;
             text-align: center;
-            color: #333;
+            color: #fff;
             margin-top: 40px;
         }
 
@@ -124,15 +118,9 @@ $user = $_SESSION['user'];
             max-width: 400px;
             margin: 40px auto;
             padding: 20px;
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo img {
-            max-width: 100%;
-            height: auto;
-            width: 100px;
         }
 
         .error, .success {
