@@ -131,15 +131,15 @@ $user = $_SESSION['user'];
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo">
-                <span>Catatan Pengeluaran</span>
-            </a>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid"> <!-- Menggunakan container-fluid untuk memenuhi lebar penuh -->
+        <div class="d-flex align-items-center">
+            <img src="/unkpresent/devops/public/image/logoPengeluaran.png" alt="Logo" style="height: 60px;">
+            <span style="font-weight: bold; font-size: 1.5rem; color: #FFFFFF; margin-left: 10px;">Catatan Pengeluaran</span>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Konten Dashboard -->
     <div class="container mt-5">
